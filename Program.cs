@@ -68,7 +68,7 @@ List<Product> products = new List<Product>()
     {
         Name = "Helmet",
         Price = 13.00M,
-        Sold = true,
+        Sold = false,
         StockDate = new DateTime(2023, 9, 15),
         ManufactureYear = 2023,
         Condition = 3.6
@@ -120,7 +120,10 @@ void ViewProductDetails()
         Console.WriteLine("Please enter a product number: ");
         try
         {
+            //this converts the users response to an integer
             int response = int.Parse(Console.ReadLine().Trim());
+            //the array is indexex by [response - 1] bc array indices usually start from zero
+            //but user friendly product numbers might start from 1
             chosenProduct = products[response - 1];
         }
         catch (FormatException)
@@ -186,6 +189,6 @@ void ViewLatestProducts()
     }
     for (int i = 0; i < latestProducts.Count; i++)
     {
-        Console.WriteLine($"{i + 1}. {latestProducts[1].Name}");
+        Console.WriteLine($"{i + 1}. {latestProducts[i].Name}");
     }
 }
